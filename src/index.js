@@ -3,6 +3,7 @@
 // == Import : npm
 import React from 'react'; // couche 1
 import { render } from 'react-dom'; // couche 2
+import 'semantic-ui-css/semantic.min.css';
 
 // == Import : local
 // Composants
