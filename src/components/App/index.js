@@ -2,14 +2,21 @@
 import React from 'react';
 
 // == Import
-import './styles.css';
+import SearchBar from 'src/components/SearchBar';
+import Indication from 'src/components/Indication';
+import CardList from 'src/components/CardList';
+
+import 'semantic-ui-css/semantic.min.css';
+import './styles.scss';
 
 // == Composant
 const App = () => {
 
   return (
     <div className="app">
-      Plop
+      <SearchBar />
+      <Indication />
+      <CardList />
     </div>
   );
 };
