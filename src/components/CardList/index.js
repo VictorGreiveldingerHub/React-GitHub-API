@@ -6,25 +6,22 @@ import PropTypes from 'prop-types';
 import { Container, Card } from 'semantic-ui-react';
 
 // Composant 
-const CardList = () => {
+const CardList = ( {items} ) => {
+    const cardListJSX = items.map((item) => {
+        return (
+            <Card
+                key={item.id}
+                image={item.owner.avatar_url}
+                header={item.name}
+                meta={item.owner.login}
+                description={item.description}
+            />
+        );
+    });
     return (
-        <Container className="list-items">
-            <Card
-                header='Elliot Baker'
-                meta='Friend'
-                description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.'
-            />
-            <Card
-                header='Elliot Baker'
-                meta='Friend'
-                description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.'
-            />
-            <Card
-                header='Elliot Baker'
-                meta='Friend'
-                description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.'
-            />
-        </Container>
+        <Card.Group itemsPerRow={3} stackable>
+            {cardListJSX}
+        </Card.Group>
     );
 };
 

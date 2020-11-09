@@ -6,9 +6,10 @@ import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
 
 // Composant 
-const Indication = ( {data} ) => {
+const Indication = ({nbr}) => {
+    console.log(nbr);
     return (
-        <Container>La recherche a donné {data.total_count} résultats</Container>
+        <Container className="indication-container">La recherche a donné {nbr.total_count} résultat</Container>
     );
 };
 

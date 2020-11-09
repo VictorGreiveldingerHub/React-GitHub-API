@@ -9,7 +9,7 @@ import { Input, Container } from 'semantic-ui-react';
 const SearchBar = () => {
     return (
         <Container>
-            <Input icon='search' iconPosition='left' placeholder='Search...' />
+            <Input icon='search' iconPosition='left' placeholder='React' />
         </Container>
     );
 };
