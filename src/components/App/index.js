@@ -16,7 +16,7 @@ const DEFAULT_QUERY = "ruby";
 // == Composant
 const App = () => {
   const [initialData, setInitialData] = useState([]);
-  const [query, setQuery] = useState('react');
+  const [query, setQuery] = useState(DEFAULT_QUERY);
 
   const handleChange = (evt) => {
     setQuery(evt.target.value);
