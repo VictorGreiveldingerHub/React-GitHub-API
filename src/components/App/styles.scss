@@ -3,6 +3,9 @@
     margin: 1em auto;
     text-align: center;
 
+    & .ui.input {
+        width: 750px;
+    }
     // Pour le composant Indication
     & .indication-container {
         border: 1px solid #000;

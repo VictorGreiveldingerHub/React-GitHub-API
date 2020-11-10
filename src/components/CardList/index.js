@@ -2,30 +2,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Repository from 'src/components/Repository';
+
 // Import
-import { Container, Card } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 
 // Composant 
 const CardList = ( {items} ) => {
     const cardListJSX = items.map((item) => {
         return (
-            <Card
-                key={item.id}
-                image={item.owner.avatar_url}
-                header={item.name}
-                meta={item.owner.login}
-                description={item.description}
+            <Repository 
+                item={item.owner} 
+                {...item}
             />
         );
     });
+
     return (
-        <Card.Group itemsPerRow={3} stackable>
+        <Card.Group itemsPerRow={3}>
             {cardListJSX}
         </Card.Group>
     );
 };
 
-CardList.PropTypes = {
+CardList.propTypes = {
+    items: PropTypes.array.isRequired,
 };
 
 export default CardList;

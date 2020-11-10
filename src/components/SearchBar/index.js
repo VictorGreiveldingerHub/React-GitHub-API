@@ -3,18 +3,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Import 
-import { Input, Container } from 'semantic-ui-react';
+import { Form, Input, Segment } from 'semantic-ui-react';
 
 // Composant 
-const SearchBar = () => {
+const SearchBar = ({ handleChange, value, handleSubmit}) => {
     return (
-        <Container>
-            <Input icon='search' iconPosition='left' placeholder='React' />
-        </Container>
+        <Segment>
+            <Form>
+                <Form.Field>
+                    <Input 
+                        icon='search' 
+                        iconPosition='left' 
+                        placeholder='react'
+                        value={value}
+                        onChange={(e) => { handleChange(e.target.value)}}
+                    />
+                </Form.Field>
+            </Form>
+        </Segment>
     );
 };
 
 SearchBar.propTypes = {
+    handleChange: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
