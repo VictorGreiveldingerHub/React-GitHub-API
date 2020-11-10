@@ -16,21 +16,19 @@ const DEFAULT_QUERY = "ruby";
 // == Composant
 const App = () => {
   const [initialData, setInitialData] = useState([]);
-  const [search, setSearch] = useState('react');
+  const [query, setQuery] = useState('react');
 
-  
-  
-  const handleChange = (value) => {
-    setSearch(value);
+  const handleChange = (evt) => {
+    setQuery(evt.target.value);
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    setSearch()
+    fetchRepos();
   };
 
   const fetchRepos = () => {
-    axios.get(GITHUB_API + DEFAULT_QUERY)
+    axios.get(GITHUB_API + query)
       .then((res) => {
         setInitialData(res.data.items);
       }
@@ -42,7 +40,11 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-      <SearchBar value={search} handleChange={handleChange} handleSubmit={handleSubmit}/>
+      <SearchBar 
+        value={query} 
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
       <Indication />
       <CardList items={initialData}/>
     </div>

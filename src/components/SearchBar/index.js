@@ -9,14 +9,14 @@ import { Form, Input, Segment } from 'semantic-ui-react';
 const SearchBar = ({ handleChange, value, handleSubmit}) => {
     return (
         <Segment>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Form.Field>
                     <Input 
                         icon='search' 
                         iconPosition='left' 
                         placeholder='react'
                         value={value}
-                        onChange={(e) => { handleChange(e.target.value)}}
+                        onChange={handleChange}
                     />
                 </Form.Field>
             </Form>
