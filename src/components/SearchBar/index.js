@@ -6,17 +6,18 @@ import PropTypes from 'prop-types';
 import { Form, Input, Segment } from 'semantic-ui-react';
 
 // Composant 
-const SearchBar = ({ handleChange, value, handleSubmit}) => {
+const SearchBar = ({ handleChange, value, handleSubmit, loading}) => {
     return (
         <Segment>
             <Form onSubmit={handleSubmit}>
                 <Form.Field>
-                    <Input 
+                    <Input
                         icon='search' 
                         iconPosition='left' 
                         placeholder='react'
                         value={value}
                         onChange={handleChange}
+                        loading={loading}
                     />
                 </Form.Field>
             </Form>
@@ -25,6 +26,7 @@ const SearchBar = ({ handleChange, value, handleSubmit}) => {
 };
 
 SearchBar.propTypes = {
+    loading: PropTypes.bool.isRequired,
     handleChange: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
     handleSubmit: PropTypes.func.isRequired,
