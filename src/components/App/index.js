@@ -20,11 +20,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
 
   const fetchRepos = () => {
-    axios.get(GITHUB_API + query, {
-      headers: {
-        Authorization: 'token a0067ee84154fda26b536a71b05189d7b31ebf2d',
-      },
-    })
+    axios.get(GITHUB_API + query)
       .then((res) => {
         setInitialData(res.data.items);
         // Lorsque je reçoit mes valeurs, je dis au loader de s'arreter
