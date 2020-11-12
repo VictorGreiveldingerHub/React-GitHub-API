@@ -53,7 +53,7 @@ const App = () => {
         handleSubmit={handleSubmit}
       />
       <Indication />
-      <CardList items={initialData}/>
+      <CardList items={initialData} loading={loading} />
     </div>
   );
 };

@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import Repository from 'src/components/Repository';
 
 // Import
-import { Card } from 'semantic-ui-react';
+import { Card, Segment } from 'semantic-ui-react';
 
 // Composant 
-const CardList = ( {items} ) => {
+const CardList = ( {items, loading} ) => {
     const cardListJSX = items.map((item) => {
         return (
             <Repository 
@@ -17,15 +17,19 @@ const CardList = ( {items} ) => {
             />
         );
     });
+    
 
     return (
-        <Card.Group itemsPerRow={3}>
-            {cardListJSX}
-        </Card.Group>
+        <Segment loading={loading}>
+            <Card.Group itemsPerRow={3}>
+                {cardListJSX}
+            </Card.Group>
+        </Segment>
     );
 };
 
 CardList.propTypes = {
+    loading: PropTypes.bool.isRequired,
     items: PropTypes.array.isRequired,
 };
 
