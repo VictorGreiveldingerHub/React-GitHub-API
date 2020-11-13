@@ -14,10 +14,6 @@ const DEFAULT_QUERY = "react";
 
 // == Composant
 const App = () => {
-  // const [initialData, setInitialData] = useState([]);
-  const [query, setQuery] = useState(DEFAULT_QUERY);
-  // Pour la gestion du state du loader, true = tourne, false = s'arrete
-  // const [loading, setLoading] = useState(false);
 
   const reducer = (state, action) => {
     switch (action.type) {
@@ -27,20 +23,27 @@ const App = () => {
       case 'UPDATE_REPOS' : {
         return {...state, initialData : action.payload, loading: false };
       }
+      case 'UPDATE_QUERY' : {
+        return {...state, query : action.payload };
+      }
     }
   };
 
 // Utilisation de useReducer pour gérer l'état de App
   const [state, dispatch] = useReducer(reducer, {
+    // Liste des repos venant de l'API
     initialData: [],
+    // Input controlé pour la recherche utilisateur dans l'API des repos
     loading: false,
+    // Chargement asynchrone des résultats => feedback Utilisateur 
+    query: DEFAULT_QUERY,
+    // Informations utiles pour créer un message à destination de l'utilisateur 
   });
 
   const fetchRepos = () => {
-    axios.get(GITHUB_API + query)
+    axios.get(GITHUB_API + state.query)
       .then((res) => {
         // setInitialData(res.data.items);
-        // Lorsque je reçoit mes valeurs, je dis au loader de s'arreter
         // setLoading(false);
         dispatch ({ type: 'UPDATE_REPOS', payload: res.data.items });
       }
@@ -48,7 +51,8 @@ const App = () => {
   };
 
   const handleChange = (evt) => {
-    setQuery(evt.target.value);
+    // setQuery(evt.target.value);
+    dispatch ({ type : 'UPDATE_QUERY', payload : evt.target.value});
   };
 
   const handleSubmit = (evt) => {
@@ -66,7 +70,7 @@ const App = () => {
       <Header />
       <SearchBar
         loading={state.loading}
-        value={query} 
+        value={state.query} 
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />

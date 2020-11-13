@@ -11,7 +11,8 @@ import { Card, Segment } from 'semantic-ui-react';
 const CardList = ( {items, loading} ) => {
     const cardListJSX = items.map((item) => {
         return (
-            <Repository 
+            <Repository
+                key={item.id}
                 item={item.owner} 
                 {...item}
             />
