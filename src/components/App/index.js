@@ -26,6 +26,9 @@ const App = () => {
       case 'UPDATE_QUERY' : {
         return {...state, query : action.payload };
       }
+      case 'DISPLAY_MESSAGE' : {
+        return {...state, message : action.payload}
+      }
     }
   };
 
@@ -37,7 +40,8 @@ const App = () => {
     loading: false,
     // Chargement asynchrone des résultats => feedback Utilisateur 
     query: DEFAULT_QUERY,
-    // Informations utiles pour créer un message à destination de l'utilisateur 
+    // Informations utiles pour créer un message à destination de l'utilisateur
+    message: '',
   });
 
   const fetchRepos = () => {
@@ -46,6 +50,7 @@ const App = () => {
         // setInitialData(res.data.items);
         // setLoading(false);
         dispatch ({ type: 'UPDATE_REPOS', payload: res.data.items });
+        dispatch ({ type: 'DISPLAY_MESSAGE', payload: res.data.total_count });
       }
     );
   };
@@ -74,7 +79,7 @@ const App = () => {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
-      <Indication />
+      <Indication message={state.message}/>
       <CardList items={state.initialData} loading={state.loading} />
     </div>
   );

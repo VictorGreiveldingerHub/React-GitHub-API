@@ -8,7 +8,11 @@ import Repository from 'src/components/Repository';
 import { Card, Segment } from 'semantic-ui-react';
 
 // Composant 
-const CardList = ( {items, loading} ) => {
+const CardList = (
+    {
+        items,
+        loading
+    }) => {
     const cardListJSX = items.map((item) => {
         return (
             <Repository
